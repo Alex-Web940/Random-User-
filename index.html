@@ -27,26 +27,51 @@
 
         <div class="credencial-text">
 
-        <p>Telefono</p>
-        <p id="telefono"></p>
-        <p>Edad</p>
-        <p id="edad"></p>
-        <p>Email</p>
-        <p id="email"></p>
-        <p>pais</p>
-        <p id="pais"></p>
-        <p>Ciudad</p>
-        <p id="cuidad de recidencia"></p>
-        <p>Fecha Nacimiento</p>
-        <p id="fecha-na"></p>
+          <p>Titulo</p>
+        <p id="titulo" class="dato"></p>
+
         <p>Genero</p>
-        <p id="genero"></p>
+        <p id="genero" class="dato"></p>
+
+        <p>Edad</p>
+        <p id="edad" class="dato"></p>
+
+        <p>Fecha Nacimiento</p>
+        <p id="fecha-na" class="dato"></p>
+
+        <p>Email</p>
+        <p id="email" class="dato"></p>
+
+        <p>celular</p>
+        <p id="celular" class="dato"></p>
+
+        <p>Telefono</p>
+        <p id="telefono" class="dato"></p>
+
+        <p>Nacionalidad</p>
+        <p id="nacionalidad" class="dato"></p>
+
+        <p>pais</p>
+        <p id="pais" class="dato"></p>
+
+        <p>Estado</p>
+        <p id="estado" class="dato"></p>
+
+        <p>Ciudad</p>
+        <p id="cuidad" class="dato"></p>
+
+        <p>calle</p>
+        <p id="calle" class="dato"></p>
+
+        <p>Numero de calle</p>
+        <p id="num_calle" class="dato"></p>
+
+        <p>Codigo postal</p>
+        <p id="codigo_postal" class="dato"></p>
 
         </div>
-
-    </di>
-
-</div>
+        </div>
+    </div>
     
 
     <script>
@@ -75,7 +100,7 @@
             let pais = document.getElementById("pais")
             pais.textContent = res.data.results[0].location.country
 
-            let ciudad = document.getElementById("cuidad de recidencia")
+            let ciudad = document.getElementById("cuidad")
             ciudad.textContent = res.data.results[0].location.city
 
             
@@ -86,9 +111,37 @@
             let genero = document.getElementById("genero")
             genero.textContent = res.data.results[0].gender
 
-        })
-      
+            let Titulo = document.getElementById("titulo")
+            Titulo.textContent = res.data.results[0].name.title
+
+            let celular = document.getElementById("celular")
+            celular.textContent = res.data.results[0].cell
+
+            let Estado = document.getElementById("estado")
+            Estado.textContent = res.data.results[0].location.state
+
+            let num_calle = document.getElementById("num_calle")
+            num_calle.textContent = res.data.results[0].location.street.number
+
+            let calle = document.getElementById("calle")
+            calle.textContent = res.data.results[0].location.street.name
+
+            let codigo_postal = document.getElementById("codigo_postal")
+            codigo_postal.textContent = res.data.results[0].location.postcode
+
+            let nacionalidad = document.getElementById("nacionalidad")
+            nacionalidad.textContent = res.data.results[0].nat
+        }) 
+
+        document.querySelectorAll(".dato").forEach(element => {
+            element.addEventListener("click", () => {
+                window.open(
+                    ` https://www.google.com/search?q=${encodeURIComponent(element.textContent)}`,
+                    "_blank"
+            
+                );
+            });
+        });
     </script>
-   
 </body>
 </html>
